@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>THMSTARKILLER</title>
+<!-- Add to <head> section -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="assets\favicons\icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Oxanium:wght@400;700&display=swap"
         rel="stylesheet">
@@ -1350,6 +1354,24 @@
         document.querySelector('.cyber-menu-btn').addEventListener('click', () => {
             document.querySelector('nav').classList.toggle('mobile-active');
         });
+        // Add to script
+        let counter = 0;
+        const favicon = document.querySelector('link[rel="icon"]');
+        const emojis = ['💀', '☠️', '💻', '🔥'];
+
+        function animateFavicon() {
+            if (counter % 2 === 0) {
+                favicon.href = `data:image/svg+xml,${encodeURIComponent(
+                    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <text y=".9em" font-size="90" fill="#0ff" style="text-shadow:0 0 10px #0ff">${emojis[counter % emojis.length]}</text>
+            </svg>`
+                )}`;
+            }
+            counter++;
+            requestAnimationFrame(animateFavicon);
+        }
+
+        animateFavicon();
     </script>
 </body>
 
