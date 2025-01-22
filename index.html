@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THOMAS NICOLI - Cybernetic Dev</title>
+    <title>THMSTARKILLER</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Oxanium:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Oxanium:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --neon-cyan: #0ff;
@@ -80,8 +82,8 @@
 
         /* Main Sections */
         section {
-            padding: 8rem 2rem 2rem;
-            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            min-height: 90vh;
             border-bottom: 3px solid var(--neon-pink);
         }
 
@@ -111,7 +113,9 @@
         }
 
         /* Typography */
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             text-shadow: 0 0 10px currentColor;
@@ -181,7 +185,8 @@
             position: relative;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             background: none;
             border: 2px solid var(--neon-pink);
@@ -196,7 +201,7 @@
             background: none;
             border: 3px solid var(--neon-pink);
             color: var(--neon-pink);
-            padding: 1rem 2rem;
+            padding: 0rem 1rem;
             font-size: 1.2rem;
             text-transform: uppercase;
             cursor: pointer;
@@ -212,35 +217,62 @@
 
         /* Alert Styles */
         @keyframes alert-pop {
-            0% { transform: translateY(-100%) translateX(-50%); opacity: 0; }
-            100% { transform: translateY(0) translateX(-50%); opacity: 1; }
+            0% {
+                transform: translateY(-100%) translateX(-50%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0) translateX(-50%);
+                opacity: 1;
+            }
         }
 
         @keyframes alert-glitch {
-            0% { text-shadow: 0 0 10px var(--neon-cyan); }
-            50% { text-shadow: 2px 2px 2px var(--neon-pink), -2px -2px 2px var(--neon-yellow); }
-            100% { text-shadow: 0 0 10px var(--neon-cyan); }
+            0% {
+                text-shadow: 0 0 10px var(--neon-cyan);
+            }
+
+            50% {
+                text-shadow: 2px 2px 2px var(--neon-pink), -2px -2px 2px var(--neon-yellow);
+            }
+
+            100% {
+                text-shadow: 0 0 10px var(--neon-cyan);
+            }
+        }
+
+        .review-timestamp {
+            font-size: 0.8rem;
+            color: #ff0;
+            text-align: right;
+            margin-top: 1rem;
+            opacity: 0.8;
+            text-shadow: 0 0 5px #ff0;
         }
 
         .cyber-alert {
+            /* Your existing alert styles */
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 2, 9, 0.95);
-            color: var(--neon-cyan);
+            color: #0ff;
             padding: 1.5rem 3rem;
-            border: 3px solid var(--neon-pink);
+            border: 3px solid #f0f;
             font-family: 'Orbitron';
-            box-shadow: 0 0 30px var(--neon-pink);
+            box-shadow: 0 0 30px #f0f;
             z-index: 99999;
             text-align: center;
-            animation: alert-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
-                     alert-glitch 1s infinite;
-            border-radius: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            animation: alert-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                alert-glitch 1s infinite;
+        }
+
+        .cyber-alert.error {
+            border-color: #ff0000;
+            box-shadow: 0 0 30px #ff0000;
+            color: #ff0000;
         }
 
         .alert-message {
@@ -289,57 +321,191 @@
             }
 
             section {
-                padding: 6rem 1rem 2rem;
+                padding: 4rem 1rem 2rem;
             }
 
-            .cyber-review, #recommendation-form {
+            .cyber-review,
+            #recommendation-form {
                 padding: 1.5rem;
             }
         }
 
         /* Animations */
         @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-2px, 2px)
+            }
+
+            40% {
+                transform: translate(-2px, -2px)
+            }
+
+            60% {
+                transform: translate(2px, 2px)
+            }
+
+            80% {
+                transform: translate(2px, -2px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
         }
 
         .glitch {
             animation: glitch 1s infinite;
             animation-timing-function: steps(2, end);
         }
+
+        /* Music Section Styles */
+        #music {
+            background: linear-gradient(45deg, #000, #000c1a);
+            border-color: var(--neon-yellow);
+        }
+
+        .tracks-container {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cyber-track {
+            background: rgba(0, 2, 9, 0.9);
+            padding: 1.5rem;
+            border: 2px solid var(--neon-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .play-btn {
+            background: none;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: skew(-10deg);
+        }
+
+        .play-btn.playing {
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .progress-container {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--neon-pink);
+            transition: width 0.1s linear;
+        }
+
+        .duration {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        .track-info h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 0.25rem;
+        }
+
+        .track-info p {
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+        }
+
+        .progress-container {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            pointer-events: none;
+        }
+
+        .scrubber {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .progress-container:hover .scrubber {
+            opacity: 1;
+        }
+
+        .play-btn .pause-icon {
+            display: none;
+        }
+
+        .play-btn.playing .play-icon {
+            display: none;
+        }
+
+        .play-btn.playing .pause-icon {
+            display: block;
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <a href="#" class="logo glitch">T_NICOLI.exe</a>
+        <a href="#" class="logo glitch">THMSTARKILLER.exe</a>
         <button class="mobile-menu-btn">☠️ MENU</button>
         <nav>
             <a href="#home">💀 Home</a>
             <a href="#about">🔥 About</a>
-            <a href="#projects">💻 Projects</a>
-            <a href="#skills">⚡ Skills</a>
+            <a href="#music">🎵 Releases</a>
+            <a href="#skills">⚡ Spotify</a>
             <a href="#recommendations">🤘 Recs</a>
         </nav>
     </header>
 
     <section id="about">
-        <img src="https://thmstarkiller.github.io/dsfServices/img/chihuamorch.png" alt="Thomas Nicoli">
+        <img src="img\profilepic.jpg" alt="Thomas Nicoli">
         <div class="cyber-review">
-            <h1>CODE OR DIE TRYING</h1>
+            <h1>ENJOY THE RIDE</h1>
             <p style="color: var(--neon-cyan); font-size: clamp(1rem, 2vw, 1.5rem);">
-                I'm the code-slinging motherf***er who'll bend tech to my will.<br>
-                Building shit that makes your grandma's WordPress site look like a f***ing cave painting.<br>
+                Hey girls, I am here doing stuff.<br>
+                I make music, I code, I create, I do a lot of crazy shit and I'm weird but I have fun so F*ck off
+                lol.<br>
                 10+ years of breaking shit and making it better. Zero f***s given.
             </p>
         </div>
     </section>
 
     <section id="skills">
-        <h2>SKILLS THAT'LL MELT YOUR FACE</h2>
+        <h2>CHECK MY SPOTIFY PAGE</h2>
         <div class="skills-container">
             <div class="skill">
                 <h3>HTML5</h3>
@@ -359,39 +525,79 @@
         </div>
     </section>
 
-    <section id="projects">
-        <h2>PROJECTS THAT DON'T SUCK</h2>
-        <div class="projects-container">
-            <div class="cyber-review">
-                <h3>F***ING E-COMMERCE BEAST</h3>
-                <p>Built this motherf***er to handle more transactions than your mom's OnlyFans</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">⚡ React</span>
-                    <span class="tech-tag">💥 Node.js</span>
-                    <span class="tech-tag">🔥 MongoDB</span>
+    <section id="music">
+        <h2 class="glitch">NEXT SPOTIFY RELEASES</h2>
+        <div class="tracks-container">
+            <!-- Track 1 -->
+            <div class="cyber-track">
+                <div class="track-controls">
+                    <button class="play-btn" data-audio="tracks\tetasbondadosas.wav">
+                        <span class="glitch play-icon">▶</span>
+                        <span class="glitch pause-icon">⏸</span>
+                    </button>
+                    <div class="track-info">
+                        <h3>TETAS BONDADOSAS</h3>
+                        <p>POP ROCK</p>
+                    </div>
                 </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="scrubber"></div>
+                </div>
+                <span class="duration">3:28</span>
             </div>
-            <div class="cyber-review">
-                <h3>AI CHAT DEMON</h3>
-                <p>Natural language processing engine that'll steal your job</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">🤖 Python</span>
-                    <span class="tech-tag">🧠 TensorFlow</span>
+
+            <!-- Track 2 -->
+            <div class="cyber-track">
+                <div class="track-controls">
+                    <button class="play-btn" data-audio="tracks\descontrol.wav">
+                        <span class="glitch play-icon">▶</span>
+                        <span class="glitch pause-icon">⏸</span>
+                    </button>
+                    <div class="track-info">
+                        <h3>LA VIDA DE KIKE</h3>
+                        <p>REGGAETON</p>
+                    </div>
                 </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="scrubber"></div>
+                </div>
+                <span class="duration">4:37</span>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="cyber-track">
+                <div class="track-controls">
+                    <button class="play-btn" data-audio="tracks\chuquicamata.wav">
+                        <span class="glitch play-icon">▶</span>
+                        <span class="glitch pause-icon">⏸</span>
+                    </button>
+                    <div class="track-info">
+                        <h3>VUELVETE A CHUQUICAMATA</h3>
+                        <p>TECHNO</p>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="scrubber"></div>
+                </div>
+                <span class="duration">3:39</span>
             </div>
         </div>
     </section>
 
     <section id="recommendations">
         <div class="cyber-review">
-            <h2 class="glitch">HOLY SHIT REVIEWS</h2>
+            <h2 class="glitch">LEAVE ME A MESSAGE</h2>
             <div id="recommendations-list">
                 <div class="cyber-review">
                     <div class="review-header">
                         <div class="review-avatar"></div>
-                        <h3>JOHN "CHAOS" DOE</h3>
+                        <h3>JACKY LA PUTINHA</h3>
                     </div>
-                    <p>"This mad bastard coded my entire fucking infrastructure while I was taking a piss. 11/10 would get mind-blown again."</p>
+                    <p>"This mad bastard coded my entire fucking infrastructure while I was taking a piss. 11/10 would
+                        get mind-blown again."</p>
                     <div class="review-tags">
                         <span class="tech-tag">⚡ CODE WIZARD</span>
                         <span class="tech-tag">💀 ZERO FUCKS</span>
@@ -401,83 +607,168 @@
         </div>
 
         <form id="recommendation-form">
-            <div class="form-title">DROP YOUR F*CKING REVIEW</div>
+            <div class="form-title">DROP YOUR F*CKING MESSAGE</div>
             <input type="text" id="name" placeholder="YOUR GODDAMN NAME" required>
             <textarea id="message" rows="4" placeholder="TYPE SOME BADASS WORDS OR GTFO" required></textarea>
             <button type="submit"><span class="glitch">LAUNCH REVIEW</span></button>
         </form>
     </section>
+    <script type="module" src="./supabase.js"></script>
+    <script type="module">
+        import { supabase, reviewService, domUtils } from './supabase.js'
 
-    <script>
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
-            document.querySelector('nav').classList.toggle('active');
-        });
+            document.querySelector('nav').classList.toggle('active')
+        })
 
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
-                });
-            });
-        });
+                })
+            })
+        })
 
         // Form Submission
-        document.getElementById('recommendation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value || "ANONYMOUS BADASS";
-            const message = document.getElementById('message').value;
+        document.getElementById('recommendation-form').addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const nameInput = document.getElementById('name')
+            const messageInput = document.getElementById('message')
 
-            // Add new recommendation
-            const newRec = document.createElement('div');
-            newRec.className = 'cyber-review';
-            newRec.innerHTML = `
-                <div class="review-header">
-                    <div class="review-avatar" 
-                         style="background: ${Math.random() > 0.5 ? 'var(--neon-cyan)' : 'var(--neon-pink)'}">
-                    </div>
-                    <h3>${name.toUpperCase()}</h3>
-                </div>
-                <p>"${message}"</p>
-                <div class="review-tags">
-                    <span class="tech-tag">
-                        ${['⚡ CODE DEMON', '💀 SORCERER', '🔥 WIZARD'][Math.floor(Math.random() * 3)]}
-                    </span>
-                </div>
-            `;
+            const name = nameInput.value || "ANONYMOUS BADASS"
+            const message = messageInput.value
 
-            document.getElementById('recommendations-list').prepend(newRec);
-            this.reset();
+            try {
+                const { data, error } = await reviewService.createReview({ name, message })
+                if (error) throw error
 
-            // Scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+                const newRec = domUtils.createReviewElement(data[0])
+                document.getElementById('recommendations-list').prepend(newRec)
+                e.target.reset()
+
+                // Personalize the alert with their fucking name
+                domUtils.showAlert(
+                    `✔️ ${name.toUpperCase()}, YOUR FUCKING REVIEW LAUNCHED TO CYBERSPACE`,
+                    false,
+                    name.toUpperCase()
+                )
+            } catch (error) {
+                console.error('Submission error:', error)
+                domUtils.showAlert(`❌ THAT FUCKING SUCKS: ${error.message}`, true)
+            }
+        })
+
+        // Load Initial Reviews
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const { data, error } = await reviewService.getReviews()
+                if (error) throw error
+
+                const container = document.getElementById('recommendations-list')
+                container.innerHTML = ''
+                data.forEach(review => {
+                    container.appendChild(domUtils.createReviewElement(review))
+                })
+            } catch (error) {
+                console.error('Load error:', error)
+                domUtils.showAlert('❌ FAILED TO LOAD REVIEWS', true)
+            }
+        })
+        // COMPLETE AUDIO SYSTEM (paste in supabase.js)
+        const audioSystem = (() => {
+            let currentAudio = null;
+            let currentButton = null;
+            let isDragging = false;
+
+            const initAudio = (button) => {
+                if (!button.audioElement) {
+                    const audio = new Audio(button.dataset.audio);
+                    audio.preload = 'metadata';
+
+                    audio.addEventListener('error', () => {
+                        domUtils.showAlert(`❌ AUDIO CORRUPTION: ${button.dataset.audio}`, true);
+                        button.classList.add('error');
+                    });
+
+                    button.audioElement = audio;
+                    button.progressBar = button.closest('.cyber-track').querySelector('.progress-bar');
+                    button.scrubber = button.closest('.cyber-track').querySelector('.scrubber');
+                    button.progressContainer = button.closest('.cyber-track').querySelector('.progress-container');
+
+                    // Progress bar handlers
+                    const updateProgress = () => {
+                        const progress = (audio.currentTime / audio.duration) * 100 || 0;
+                        button.progressBar.style.width = `${progress}%`;
+                        button.scrubber.style.left = `${progress}%`;
+                    };
+
+                    const handleMouseDown = (e) => {
+                        isDragging = true;
+                        const rect = button.progressContainer.getBoundingClientRect();
+                        const percentage = (e.clientX - rect.left) / rect.width;
+                        audio.currentTime = percentage * audio.duration;
+                        updateProgress();
+                    };
+
+                    const handleMouseMove = (e) => {
+                        if (!isDragging) return;
+                        const rect = button.progressContainer.getBoundingClientRect();
+                        const percentage = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+                        audio.currentTime = percentage * audio.duration;
+                        updateProgress();
+                    };
+
+                    const handleMouseUp = () => {
+                        isDragging = false;
+                    };
+
+                    button.progressContainer.addEventListener('mousedown', handleMouseDown);
+                    document.addEventListener('mousemove', handleMouseMove);
+                    document.addEventListener('mouseup', handleMouseUp);
+
+                    // Time updates
+                    audio.addEventListener('timeupdate', updateProgress);
+                }
+
+                return button.audioElement;
+            };
+
+            const togglePlayback = async (button) => {
+                const audio = initAudio(button);
+
+                if (currentAudio && currentAudio !== audio) {
+                    currentAudio.pause();
+                    currentButton.classList.remove('playing');
+                }
+
+                if (audio.paused) {
+                    await audio.play();
+                    button.classList.add('playing');
+                    currentAudio = audio;
+                    currentButton = button;
+                } else {
+                    audio.pause();
+                    button.classList.remove('playing');
+                }
+            };
+
+            return { togglePlayback };
+        })();
+
+        // INITIALIZE PLAYER CONTROLS (paste in main script)
+        document.querySelectorAll('.play-btn').forEach(button => {
+            button.addEventListener('click', async () => {
+                try {
+                    await audioSystem.togglePlayback(button);
+                } catch (error) {
+                    domUtils.showAlert(`❌ PLAYBACK FAILURE: ${error.message}`, true);
+                }
             });
-
-            // Create cyberpunk alert
-            const alert = document.createElement('div');
-            alert.className = 'cyber-alert';
-            alert.innerHTML = `
-                <div class="alert-message">
-                    ✔️ THANK YOU FOR YOUR RECOMMENDATION!
-                </div>
-                <div class="alert-timestamp">
-                    [SYSTEM TIME: ${new Date().toLocaleTimeString()}]
-                </div>
-            `;
-
-            document.body.appendChild(alert);
-
-            // Remove alert after 3 seconds
-            setTimeout(() => {
-                alert.style.opacity = '0';
-                alert.style.transform = 'translateY(-100%) translateX(-50%)';
-                setTimeout(() => alert.remove(), 1000);
-            }, 3000);
         });
     </script>
 </body>
+
 </html>
