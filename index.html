@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THOMAS NICOLI - Cybernetic Dev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Oxanium:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #0ff;
+            --neon-pink: #f0f;
+            --neon-yellow: #ff0;
+            --cyber-black: #000209;
+            --hacker-green: #00ff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Oxanium', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000 0%, #000c1a 100%);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(0, 2, 9, 0.97);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--neon-cyan);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-shadow: 0 0 10px var(--neon-pink);
+            letter-spacing: -1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--neon-cyan);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+        }
+
+        nav a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            text-shadow: 0 0 15px var(--neon-cyan);
+            transform: skew(-10deg);
+        }
+
+        /* Main Sections */
+        section {
+            padding: 8rem 2rem 2rem;
+            min-height: 100vh;
+            border-bottom: 3px solid var(--neon-pink);
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+            background: linear-gradient(45deg, #000, #000c1a);
+        }
+
+        #about img {
+            width: min(400px, 90vw);
+            height: min(400px, 90vw);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
+            filter: grayscale(100%) contrast(120%);
+            transition: all 0.5s ease;
+        }
+
+        #about img:hover {
+            filter: none;
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px currentColor;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--neon-cyan);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: var(--neon-yellow);
+        }
+
+        p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: #aaa;
+            max-width: 800px;
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .skill {
+            background: linear-gradient(45deg, #000, #001);
+            padding: 2rem;
+            border: 2px solid var(--neon-yellow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05) skew(-5deg);
+            box-shadow: 0 0 30px var(--neon-yellow);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .project {
+            background: linear-gradient(45deg, #000, #001);
+            padding: 2rem;
+            border: 2px solid var(--neon-pink);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .project:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+
+        /* Recommendations Section */
+        #recommendations {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-review {
+            background: rgba(0, 2, 9, 0.9);
+            padding: 2rem;
+            border: 2px solid var(--neon-cyan);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        /* Form Styles */
+        #recommendation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 2, 9, 0.9);
+            padding: 3rem;
+            border: 3px solid var(--neon-cyan);
+            position: relative;
+        }
+
+        input, textarea {
+            width: 100%;
+            background: none;
+            border: 2px solid var(--neon-pink);
+            color: #fff;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        button {
+            background: none;
+            border: 3px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background: var(--neon-pink);
+            color: #000;
+            letter-spacing: 2px;
+        }
+
+        /* Mobile Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .cyber-review, #recommendation-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+            animation-timing-function: steps(2, end);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo glitch">T_NICOLI.exe</a>
+        <button class="mobile-menu-btn">☠️ MENU</button>
+        <nav>
+            <a href="#home">💀 Home</a>
+            <a href="#about">🔥 About</a>
+            <a href="#projects">💻 Projects</a>
+            <a href="#skills">⚡ Skills</a>
+            <a href="#recommendations">🤘 Recs</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <img src="https://thmstarkiller.github.io/dsfServices/img/chihuamorch.png" alt="Thomas Nicoli">
+        <div class="cyber-review">
+            <h1>CODE OR DIE TRYING</h1>
+            <p style="color: var(--neon-cyan); font-size: clamp(1rem, 2vw, 1.5rem);">
+                I'm the code-slinging motherf***er who'll bend tech to my will.<br>
+                Building shit that makes your grandma's WordPress site look like a f***ing cave painting.<br>
+                10+ years of breaking shit and making it better. Zero f***s given.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>SKILLS THAT'LL MELT YOUR FACE</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <h3>HTML5</h3>
+                <p>Give a shit about semantic shit that actually matters</p>
+                <div class="tech-tag">💀 F***ING LEGEND</div>
+            </div>
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <p>ES6+ black magic fuckery</p>
+                <div class="tech-tag">🔥 CODE WIZARD</div>
+            </div>
+            <div class="skill">
+                <h3>React</h3>
+                <p>State management voodoo</p>
+                <div class="tech-tag">⚡ UI SORCERER</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>PROJECTS THAT DON'T SUCK</h2>
+        <div class="projects-container">
+            <div class="project">
+                <h3>F***ING E-COMMERCE BEAST</h3>
+                <p>Built this motherf***er to handle more transactions than your mom's OnlyFans</p>
+                <div class="tech-tag">⚡ React</div>
+                <div class="tech-tag">💥 Node.js</div>
+                <div class="tech-tag">🔥 MongoDB</div>
+            </div>
+            <div class="project">
+                <h3>AI CHAT DEMON</h3>
+                <p>Natural language processing engine that'll steal your job</p>
+                <div class="tech-tag">🤖 Python</div>
+                <div class="tech-tag">🧠 TensorFlow</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recommendations">
+        <div class="cyber-review">
+            <h2 class="glitch">HOLY SHIT REVIEWS</h2>
+            <div id="recommendations-list">
+                <div class="cyber-review">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <h3>JOHN "CHAOS" DOE</h3>
+                    </div>
+                    <p>"This mad bastard coded my entire fucking infrastructure while I was taking a piss. 11/10 would get mind-blown again."</p>
+                    <div class="review-tags">
+                        <span class="tech-tag">⚡ CODE WIZARD</span>
+                        <span class="tech-tag">💀 ZERO FUCKS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="recommendation-form">
+            <div class="form-title">DROP YOUR F*CKING REVIEW</div>
+            <input type="text" id="name" placeholder="YOUR GODDAMN NAME" required>
+            <textarea id="message" rows="4" placeholder="TYPE SOME BADASS WORDS OR GTFO" required></textarea>
+            <button type="submit"><span class="glitch">LAUNCH REVIEW</span></button>
+        </form>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Recommendation Form
+        document.getElementById('recommendation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value || "ANONYMOUS BADASS";
+            const message = document.getElementById('message').value;
+
+            const newRec = document.createElement('div');
+            newRec.className = 'cyber-review';
+            newRec.innerHTML = `
+                <div class="review-header">
+                    <div class="review-avatar" style="background: ${Math.random() > 0.5 ? 'var(--neon-cyan)' : 'var(--neon-pink)'}"></div>
+                    <h3>${name.toUpperCase()}</h3>
+                </div>
+                <p>"${message}"</p>
+                <div class="review-tags">
+                    <span class="tech-tag">${['⚡ CODE DEMON', '💀 SORCERER', '🔥 WIZARD'][Math.floor(Math.random() * 3)]}</span>
+                </div>
+            `;
+
+            document.getElementById('recommendations-list').prepend(newRec);
+            this.reset();
+
+            // Cyber Alert
+            const alert = document.createElement('div');
+            alert.className = 'cyber-alert';
+            alert.innerHTML = `REVIEW INJECTED <span>// ${new Date().toLocaleTimeString()}</span>`;
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
