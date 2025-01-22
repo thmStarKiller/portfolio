@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>THMSTARKILLER</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Oxanium:wght@400;700&display=swap"
@@ -375,7 +375,7 @@
             margin: 0 auto;
         }
 
-        .cyber-track {
+        .cyber-track2 {
             background: rgba(0, 2, 9, 0.9);
             padding: 1.5rem;
             border: 2px solid var(--neon-pink);
@@ -475,6 +475,507 @@
         .play-btn.playing .pause-icon {
             display: block;
         }
+
+        /* CYBER SPOTIFY SECTION */
+        #cyber-tracks {
+            padding: 8rem 2rem;
+            background: linear-gradient(45deg, #000c1a 0%, #000 100%);
+            border-bottom: 3px solid var(--neon-yellow);
+        }
+
+        .cyber-disc {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hologram-container {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hologram-album {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            background-size: cover;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            animation: hologram-float 6s ease-in-out infinite;
+        }
+
+        .hologram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                    rgba(0, 255, 255, 0.1) 0%,
+                    rgba(255, 0, 255, 0.1) 100%);
+            border-radius: 50%;
+        }
+
+        .hologram-lines {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: repeating-linear-gradient(0deg,
+                    transparent 0%,
+                    transparent 5%,
+                    var(--neon-cyan) 5%,
+                    var(--neon-cyan) 5.5%);
+            opacity: 0.3;
+            animation: hologram-rotate 20s linear infinite;
+        }
+
+        .track-stats {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            padding: 2rem;
+            background: rgba(0, 2, 9, 0.9);
+            position: relative;
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 3rem;
+            color: var(--neon-pink);
+            font-family: 'Orbitron';
+            text-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+        }
+
+        .cyber-playlist {
+            background: rgba(0, 2, 9, 0.9);
+            padding: 2rem;
+            border: 2px solid var(--neon-pink);
+        }
+
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .track-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .cyber-track {
+            display: grid;
+            grid-template-columns: 50px 1fr auto;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .track-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--neon-pink) 100%);
+            opacity: 0.3;
+            transition: width 0.3s ease;
+        }
+
+        .cyber-track:hover .track-progress {
+            width: 45%;
+        }
+
+        .track-number {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron';
+        }
+
+        .track-title {
+            color: #fff;
+            margin-left: 1rem;
+        }
+
+        .track-duration {
+            color: var(--neon-yellow);
+        }
+
+        /* Animations */
+        @keyframes hologram-float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes hologram-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cyber-disc {
+                grid-template-columns: 1fr;
+            }
+
+            .hologram-container {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        /* CYBERNETIC INTERFACE STYLES */
+        .neural-interface {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(45deg, #000 0%, #000c1a 100%);
+            border: 3px solid var(--neon-pink);
+            overflow: hidden;
+        }
+
+        .hologram-mainframe {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+            position: relative;
+        }
+
+        .core-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .energy-core {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: relative;
+            background: radial-gradient(circle at center,
+                    rgba(0, 255, 255, 0.1) 0%,
+                    transparent 60%);
+        }
+
+        .core-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: core-pulse 2s infinite;
+            box-shadow: 0 0 50px var(--neon-cyan);
+        }
+
+        .core-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle, var(--neon-cyan) 1px, transparent 1px),
+                radial-gradient(circle, var(--neon-pink) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        .frequency-bars {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            display: flex;
+            justify-content: space-around;
+            transform: rotate(-30deg);
+        }
+
+        .frequency-bars .bar {
+            width: 15px;
+            height: 0;
+            background: var(--neon-pink);
+            animation: frequency-pulse 1.2s infinite ease-in-out;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        .track-deconstruction {
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .dna-visual {
+            height: 150px;
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .helix {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    var(--neon-cyan) 10px,
+                    var(--neon-cyan) 12px);
+            animation: helix-rotate 20s linear infinite;
+        }
+
+        .base-pairs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle,
+                    var(--neon-pink) 1px,
+                    transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .track-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            font-family: 'Orbitron';
+        }
+
+        .track-meta em {
+            color: var(--neon-yellow);
+            font-style: normal;
+            text-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .hologram-tracklist {
+            position: relative;
+            background: rgba(0, 2, 9, 0.9);
+            padding: 1rem;
+            border: 2px solid var(--neon-cyan);
+        }
+
+        .track-marquee {
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+        }
+
+        .track-scroll {
+            display: flex;
+            gap: 3rem;
+            position: absolute;
+            animation: marquee-scroll 20s linear infinite;
+        }
+
+        .track-scroll span {
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            font-family: 'Orbitron';
+            white-space: nowrap;
+        }
+
+        /* Animations */
+        @keyframes core-pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes frequency-pulse {
+
+            0%,
+            100% {
+                height: 20%;
+            }
+
+            50% {
+                height: 80%;
+            }
+        }
+
+        @keyframes helix-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes marquee-scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Add these responsive styles */
+        @media (max-width: 1200px) {
+            .hologram-mainframe {
+                grid-template-columns: 1fr;
+                grid-template-rows: 400px auto;
+            }
+
+            .core-container {
+                padding: 2rem;
+            }
+
+            .energy-core {
+                width: 250px;
+                height: 250px;
+            }
+
+            .track-deconstruction {
+                padding: 1rem;
+            }
+
+            .dna-visual {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .neural-interface {
+                height: auto;
+                min-height: 600px;
+            }
+
+            .hologram-mainframe {
+                grid-template-rows: 300px auto;
+            }
+
+            .energy-core {
+                width: 200px;
+                height: 200px;
+            }
+
+            .frequency-bars .bar {
+                width: 10px;
+            }
+
+            .track-meta {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .track-scroll {
+                animation-duration: 25s;
+            }
+
+            .core-grid {
+                background-size: 40px 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hologram-mainframe {
+                grid-template-rows: 250px auto;
+            }
+
+            .energy-core {
+                width: 150px;
+                height: 150px;
+            }
+
+            .frequency-bars {
+                width: 140%;
+                height: 140%;
+            }
+
+            .track-scroll span {
+                font-size: 0.8rem;
+            }
+
+            .track-deconstruction {
+                gap: 1rem;
+            }
+
+            .dna-visual {
+                height: 80px;
+                margin: 0.5rem 0;
+            }
+
+            @keyframes core-pulse {
+
+                0%,
+                100% {
+                    transform: scale(0.7);
+                }
+
+                50% {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        /* Mobile-Specific Interactions */
+        @media (hover: none) {
+            .cyber-track {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            .track-progress {
+                display: none;
+            }
+        }
+
+        /* Orientation Adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .neural-interface {
+                height: 400px;
+            }
+
+            .hologram-mainframe {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+            }
+
+            .energy-core {
+                width: 150px;
+                height: 150px;
+            }
+        }
     </style>
 </head>
 
@@ -486,7 +987,7 @@
             <a href="#home">💀 Home</a>
             <a href="#about">🔥 About</a>
             <a href="#music">🎵 Releases</a>
-            <a href="#skills">⚡ Spotify</a>
+            <a href="#skills">⚡ Skills</a>
             <a href="#recommendations">🤘 Recs</a>
         </nav>
     </header>
@@ -503,33 +1004,62 @@
             </p>
         </div>
     </section>
+    <div class="neural-interface">
+        <div class="hologram-mainframe">
+            <!-- Pulsing core -->
+            <div class="core-container">
+                <div class="energy-core">
+                    <div class="core-pulse"></div>
+                    <div class="core-grid"></div>
+                    <div class="frequency-bars">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
 
-    <section id="skills">
-        <h2>CHECK MY SPOTIFY PAGE</h2>
-        <div class="skills-container">
-            <div class="skill">
-                <h3>HTML5</h3>
-                <p>Give a shit about semantic shit that actually matters</p>
-                <div class="tech-tag">💀 F***ING LEGEND</div>
-            </div>
-            <div class="skill">
-                <h3>JavaScript</h3>
-                <p>ES6+ black magic fuckery</p>
-                <div class="tech-tag">🔥 CODE WIZARD</div>
-            </div>
-            <div class="skill">
-                <h3>React</h3>
-                <p>State management voodoo</p>
-                <div class="tech-tag">⚡ UI SORCERER</div>
+            <!-- Track Analysis -->
+            <div class="track-deconstruction">
+                <div class="analysis-panel glitch-border">
+                    <h4>ACTIVE NEURAL FEED</h4>
+                    <div class="dna-visual">
+                        <div class="helix"></div>
+                        <div class="base-pairs"></div>
+                    </div>
+                    <div class="track-meta">
+                        <span class="bpm">BPM: <em data-value="128">0</em></span>
+                        <span class="key">SPOTIFY: <em>THMSTARKILLER</em></span>
+                        <span class="energy">ENERGY: <em data-value="97">0</em>%</span>
+                    </div>
+                </div>
+
+                <!-- Floating Tracklist -->
+                <div class="hologram-tracklist">
+                    <div class="track-marquee">
+                        <div class="track-scroll">
+                            <span>TETAS_MALIGNAS</span>
+                            <span>TCHERNO_MOULE</span>
+                            <span>ULTRAVIOLET_HYPE</span>
+                            <span>XOXETE_DE_BASURA</span>
+                            <span>PORTICHAUD</span>
+                            <span>THE_ARCHEOQUEEN</span>
+                            <span>ELEFANTE_ARCOBALENO</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <section id="music">
         <h2 class="glitch">NEXT SPOTIFY RELEASES</h2>
         <div class="tracks-container">
             <!-- Track 1 -->
-            <div class="cyber-track">
+            <div class="cyber-track2">
                 <div class="track-controls">
                     <button class="play-btn" data-audio="tracks\tetasbondadosas.wav">
                         <span class="glitch play-icon">▶</span>
@@ -548,14 +1078,14 @@
             </div>
 
             <!-- Track 2 -->
-            <div class="cyber-track">
+            <div class="cyber-track2">
                 <div class="track-controls">
                     <button class="play-btn" data-audio="tracks\descontrol.wav">
                         <span class="glitch play-icon">▶</span>
                         <span class="glitch pause-icon">⏸</span>
                     </button>
                     <div class="track-info">
-                        <h3>LA VIDA DE KIKE</h3>
+                        <h3>DESCONTROL</h3>
                         <p>REGGAETON</p>
                     </div>
                 </div>
@@ -567,7 +1097,7 @@
             </div>
 
             <!-- Track 3 -->
-            <div class="cyber-track">
+            <div class="cyber-track2">
                 <div class="track-controls">
                     <button class="play-btn" data-audio="tracks\chuquicamata.wav">
                         <span class="glitch play-icon">▶</span>
@@ -586,7 +1116,26 @@
             </div>
         </div>
     </section>
-
+    <section style="min-height: 70vh;" id="skills">
+        <h2>MY SKILLS</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <h3>HTML5</h3>
+                <p>Give a shit about semantic shit that actually matters</p>
+                <div class="tech-tag">💀 F***ING LEGEND</div>
+            </div>
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <p>ES6+ black magic fuckery</p>
+                <div class="tech-tag">🔥 CODE WIZARD</div>
+            </div>
+            <div class="skill">
+                <h3>React</h3>
+                <p>State management voodoo</p>
+                <div class="tech-tag">⚡ UI SORCERER</div>
+            </div>
+        </div>
+    </section>
     <section id="recommendations">
         <div class="cyber-review">
             <h2 class="glitch">LEAVE ME A MESSAGE</h2>
@@ -694,9 +1243,9 @@
                     });
 
                     button.audioElement = audio;
-                    button.progressBar = button.closest('.cyber-track').querySelector('.progress-bar');
-                    button.scrubber = button.closest('.cyber-track').querySelector('.scrubber');
-                    button.progressContainer = button.closest('.cyber-track').querySelector('.progress-container');
+                    button.progressBar = button.closest('.cyber-track2').querySelector('.progress-bar');
+                    button.scrubber = button.closest('.cyber-track2').querySelector('.scrubber');
+                    button.progressContainer = button.closest('.cyber-track2').querySelector('.progress-container');
 
                     // Progress bar handlers
                     const updateProgress = () => {
@@ -767,6 +1316,39 @@
                     domUtils.showAlert(`❌ PLAYBACK FAILURE: ${error.message}`, true);
                 }
             });
+        });
+        // Add to your script
+        // Animate frequency bars
+        document.querySelectorAll('.frequency-bars .bar').forEach((bar, i) => {
+            bar.style.setProperty('--i', i);
+            bar.style.animationDelay = `${i * 0.2}s`;
+        });
+
+        // Animated number counters
+        document.querySelectorAll('[data-value]').forEach(el => {
+            const target = parseInt(el.dataset.value);
+            let current = 0;
+            const interval = setInterval(() => {
+                el.textContent = Math.min(current += 2, target);
+                if (current >= target) clearInterval(interval);
+            }, 20);
+        });
+        // Add touch event handlers
+        document.querySelectorAll('.cyber-track').forEach(track => {
+            track.addEventListener('touchstart', () => {
+                track.style.transform = 'skew(-5deg) scale(1.02)';
+                track.style.boxShadow = '0 0 20px var(--neon-pink)';
+            });
+
+            track.addEventListener('touchend', () => {
+                track.style.transform = 'none';
+                track.style.boxShadow = 'none';
+            });
+        });
+
+        // Handle mobile menu
+        document.querySelector('.cyber-menu-btn').addEventListener('click', () => {
+            document.querySelector('nav').classList.toggle('mobile-active');
         });
     </script>
 </body>
