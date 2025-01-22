@@ -157,27 +157,6 @@
             box-shadow: 0 0 30px var(--neon-yellow);
         }
 
-        /* Projects Section */
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .project {
-            background: linear-gradient(45deg, #000, #001);
-            padding: 2rem;
-            border: 2px solid var(--neon-pink);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .project:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px var(--neon-pink);
-        }
-
         /* Recommendations Section */
         #recommendations {
             position: relative;
@@ -229,6 +208,51 @@
             background: var(--neon-pink);
             color: #000;
             letter-spacing: 2px;
+        }
+
+        /* Alert Styles */
+        @keyframes alert-pop {
+            0% { transform: translateY(-100%) translateX(-50%); opacity: 0; }
+            100% { transform: translateY(0) translateX(-50%); opacity: 1; }
+        }
+
+        @keyframes alert-glitch {
+            0% { text-shadow: 0 0 10px var(--neon-cyan); }
+            50% { text-shadow: 2px 2px 2px var(--neon-pink), -2px -2px 2px var(--neon-yellow); }
+            100% { text-shadow: 0 0 10px var(--neon-cyan); }
+        }
+
+        .cyber-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 2, 9, 0.95);
+            color: var(--neon-cyan);
+            padding: 1.5rem 3rem;
+            border: 3px solid var(--neon-pink);
+            font-family: 'Orbitron';
+            box-shadow: 0 0 30px var(--neon-pink);
+            z-index: 99999;
+            text-align: center;
+            animation: alert-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+                     alert-glitch 1s infinite;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .alert-message {
+            color: var(--hacker-green);
+            text-shadow: 0 0 10px var(--hacker-green);
+            font-size: 1.2rem;
+        }
+
+        .alert-timestamp {
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            opacity: 0.8;
         }
 
         /* Mobile Styles */
@@ -338,18 +362,22 @@
     <section id="projects">
         <h2>PROJECTS THAT DON'T SUCK</h2>
         <div class="projects-container">
-            <div class="project">
+            <div class="cyber-review">
                 <h3>F***ING E-COMMERCE BEAST</h3>
                 <p>Built this motherf***er to handle more transactions than your mom's OnlyFans</p>
-                <div class="tech-tag">⚡ React</div>
-                <div class="tech-tag">💥 Node.js</div>
-                <div class="tech-tag">🔥 MongoDB</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">⚡ React</span>
+                    <span class="tech-tag">💥 Node.js</span>
+                    <span class="tech-tag">🔥 MongoDB</span>
+                </div>
             </div>
-            <div class="project">
+            <div class="cyber-review">
                 <h3>AI CHAT DEMON</h3>
                 <p>Natural language processing engine that'll steal your job</p>
-                <div class="tech-tag">🤖 Python</div>
-                <div class="tech-tag">🧠 TensorFlow</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">🤖 Python</span>
+                    <span class="tech-tag">🧠 TensorFlow</span>
+                </div>
             </div>
         </div>
     </section>
@@ -396,36 +424,58 @@
             });
         });
 
-        // Recommendation Form
+        // Form Submission
         document.getElementById('recommendation-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value || "ANONYMOUS BADASS";
             const message = document.getElementById('message').value;
 
+            // Add new recommendation
             const newRec = document.createElement('div');
             newRec.className = 'cyber-review';
             newRec.innerHTML = `
                 <div class="review-header">
-                    <div class="review-avatar" style="background: ${Math.random() > 0.5 ? 'var(--neon-cyan)' : 'var(--neon-pink)'}"></div>
+                    <div class="review-avatar" 
+                         style="background: ${Math.random() > 0.5 ? 'var(--neon-cyan)' : 'var(--neon-pink)'}">
+                    </div>
                     <h3>${name.toUpperCase()}</h3>
                 </div>
                 <p>"${message}"</p>
                 <div class="review-tags">
-                    <span class="tech-tag">${['⚡ CODE DEMON', '💀 SORCERER', '🔥 WIZARD'][Math.floor(Math.random() * 3)]}</span>
+                    <span class="tech-tag">
+                        ${['⚡ CODE DEMON', '💀 SORCERER', '🔥 WIZARD'][Math.floor(Math.random() * 3)]}
+                    </span>
                 </div>
             `;
 
             document.getElementById('recommendations-list').prepend(newRec);
             this.reset();
 
-            // Cyber Alert
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Create cyberpunk alert
             const alert = document.createElement('div');
             alert.className = 'cyber-alert';
-            alert.innerHTML = `REVIEW INJECTED <span>// ${new Date().toLocaleTimeString()}</span>`;
+            alert.innerHTML = `
+                <div class="alert-message">
+                    ✔️ THANK YOU FOR YOUR RECOMMENDATION!
+                </div>
+                <div class="alert-timestamp">
+                    [SYSTEM TIME: ${new Date().toLocaleTimeString()}]
+                </div>
+            `;
+
             document.body.appendChild(alert);
-            
+
+            // Remove alert after 3 seconds
             setTimeout(() => {
-                alert.remove();
+                alert.style.opacity = '0';
+                alert.style.transform = 'translateY(-100%) translateX(-50%)';
+                setTimeout(() => alert.remove(), 1000);
             }, 3000);
         });
     </script>
